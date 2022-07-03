@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import City from "./components/City";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [weather, setWeather] = useState("");
+
+  const url = "http://localhost:4000/";
+
+  //get data from fake weather API
+  useEffect(() => {
+    getAllWeather();
+  }, []);
+
+  const getAllWeather = () => {
+    axios
+      .get(`${url}weather`)
+      .then((res) => {
+        const allWeather = res.data;
+        //console.log(res);
+        setWeather(allWeather);
+      })
+      .catch((err) => console.log(`Error: ${err}`));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <City weather={weather} />
+    </>
   );
 }
 
