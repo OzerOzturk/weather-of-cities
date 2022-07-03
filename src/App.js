@@ -4,14 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState([]);
 
   const url = "http://localhost:4000/";
-
-  //get data from fake weather API
-  useEffect(() => {
-    getAllWeather();
-  }, []);
 
   const getAllWeather = () => {
     axios
@@ -24,9 +19,14 @@ function App() {
       .catch((err) => console.log(`Error: ${err}`));
   };
 
+  //get data from fake weather API
+  useEffect(() => {
+    getAllWeather();
+  }, []);
+
   return (
     <>
-      <City weather={weather} />
+      <City weather={weather}  />
     </>
   );
 }
