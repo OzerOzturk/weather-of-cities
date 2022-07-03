@@ -1,8 +1,6 @@
 # weather of the cities
 
-1) First of all, you should start your json server and arrange the port as 4000 to get the data 
-<br>
- `json-server --watch -p 4000 db.json`
+1) First of all, you should start your json server and arrange the port as 4000 to get the data `json-server --watch -p 4000 db.json`
 
 2) Then `npm start`
 
